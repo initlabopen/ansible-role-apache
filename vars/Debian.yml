@@ -12,3 +12,10 @@ __apache_packages:
 apache_ports_configuration_items:
   - regexp: "^Listen "
     line: "Listen {{ apache_listen_port }}"
+
+
+apache_prefork_startservers: 1
+apache_prefork_minspareservers: 1
+apache_prefork_maxspareservers: 1
+apache_prefork_maxrequestworkers: 5
+apache_prefork_maxconnectionsperchild: 1000

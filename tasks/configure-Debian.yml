@@ -52,3 +52,14 @@
     state: absent
   notify: restart apache
   when: apache_remove_default_vhost
+
+- name: Add apache mpm-prefork configuration.
+  template:
+    src: "mpm_prefork.conf.j2"
+    dest: "/etc/apache2/mods-available/mpm_prefork.conf"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart apache
+  when: "apache_version.split('.')[1] == '4'"
+
